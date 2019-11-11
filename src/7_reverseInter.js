@@ -7,14 +7,14 @@
  */
 function main(x) {
     let flag = false;
-    let data = x + '';
+    let data = x.toString();
 
     if(x < 0) {
         flag = true
-        data = (0 - x) + '';
+        data = (0 - x).toString();
     }
     data = data.split('').reverse().join('');
-    data = flag ? 0 - Number(data) : Number(data);
+    data = flag ? -Number(data) : Number(data);
 
     if(data > 2147483647 || data < -2147483648) {
         return 0
