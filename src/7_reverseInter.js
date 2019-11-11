@@ -1,3 +1,10 @@
+/**
+ * integer range: [−231,  231 − 1]. 
+ * 1.翻转之后应该在这个范围
+ * 2.正反大于小于0处理
+ * 3.字符串翻转
+ * @param {*} x 
+ */
 function main(x) {
     let flag = false;
     let data = x + '';
