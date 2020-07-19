@@ -52,3 +52,63 @@ var isValid = function(s) {
 
     return res && !arr.length
 };
+
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    const len = s.length
+    if(!len) {
+        return true;
+    }
+    if(len % 2) {
+        return false
+    }
+    const arr = []
+    for(let i = 0; i < len; i++) {
+        let letter = s[i]
+        switch(letter) {
+            case '{':
+            case '[':
+            case '(':
+                arr.push(letter)
+            break;
+            case '}' :
+               if(arr.pop() !== '{')  return false;
+             break;
+            case ']' :
+                 if(arr.pop()  !== '[')  return false;
+             break;
+            case ')' :
+                if(arr.pop()  !== '(')  return false;
+        }
+    }
+    return !arr.length
+};
+
+var isValid = function(s) {
+    const len = s.length
+    if(!len) {
+        return true;
+    }
+    if(len % 2 === 1 || ([')', ']', '}'].indexOf(s[0]) > -1) ) {
+        return false
+    }
+    const arr = []
+    const map = {
+        '(': ')',
+        '{': '}',
+        '[': ']'
+    }
+    for(let i = 0; i < len; i++) {
+        let letter = s[i]
+        if(map[letter]) {
+            arr.push(letter)
+        } else if(letter !== map[arr.pop()]) {
+            return false
+        }
+    }
+    return arr.length === 0
+};
